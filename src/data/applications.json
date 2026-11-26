@@ -1,0 +1,20 @@
+[
+  {
+    "slug": "parkvector",
+    "name": "ParkVector",
+    "description": "Find your way back to your parked car.",
+    "tagline": "Never lose your car again.",
+    "theme": "blue",
+    "icon": "compass",
+    "links": {}
+  },
+  {
+    "slug": "mangauniverse",
+    "name": "MangaUniverse",
+    "description": "A PARSOrg application.",
+    "tagline": "Explore MangaUniverse.",
+    "theme": "violet",
+    "icon": "book",
+    "links": {}
+  }
+]

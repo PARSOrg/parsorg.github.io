@@ -1,0 +1,14 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import { applications } from '../lib/applications';
+interface Props { frontmatter: { title: string; description?: string }; url?: string }
+const { frontmatter } = Astro.props;
+const slug = Astro.url.pathname.split('/').filter(Boolean)[1];
+const app = applications.find(item => item.slug === slug);
+---
+<BaseLayout title={frontmatter.title + ' — ' + (app?.name ?? 'PARSOrg')} description={frontmatter.description}>
+  <article class="site-container document-page">
+    <nav class="breadcrumbs" aria-label="Breadcrumb"><a href="/">Home</a><span>/</span>{app && <><a href={'/apps/' + app.slug + '/'}>{app.name}</a><span>/</span></>}<span>{frontmatter.title}</span></nav>
+    <div class="document-content"><h1>{frontmatter.title}</h1><slot /></div>
+  </article>
+</BaseLayout>

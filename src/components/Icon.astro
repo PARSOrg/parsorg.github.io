@@ -1,0 +1,18 @@
+---
+interface Props { name: string; size?: number; }
+const { name, size = 24 } = Astro.props;
+---
+<svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+  {name === 'layers' && <><path d="m12 2 10 5-10 5L2 7l10-5Z"/><path d="m2 12 10 5 10-5M2 17l10 5 10-5"/></>}
+  {name === 'grid' && <><rect x="3" y="3" width="7" height="7" rx="1.4"/><rect x="14" y="3" width="7" height="7" rx="1.4"/><rect x="3" y="14" width="7" height="7" rx="1.4"/><rect x="14" y="14" width="7" height="7" rx="1.4"/></>}
+  {name === 'chevron' && <path d="m6 9 6 6 6-6"/>}
+  {name === 'arrow' && <path d="M4 12h15m-6-6 6 6-6 6"/>}
+  {name === 'compass' && <><circle cx="12" cy="12" r="9"/><path d="m16 8-2.5 5.5L8 16l2.5-5.5L16 8Z"/></>}
+  {name === 'book' && <><path d="M12 7c-3-3-6-3-9-2v14c3-1 6-1 9 2 3-3 6-3 9-2V5c-3-1-6-1-9 2v14"/></>}
+  {name === 'history' && <><path d="M3 12a9 9 0 1 1 3 6.7M3 4v8h8"/><path d="M12 7v5l3 2"/></>}
+  {name === 'shield' && <><path d="M12 22s8-4 8-11V5l-8-3-8 3v6c0 7 8 11 8 11Z"/><path d="m9 12 2 2 4-4"/></>}
+  {name === 'file' && <><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8Z"/><path d="M14 2v6h6M8 13h8M8 17h6"/></>}
+  {name === 'github' && <><path d="M9 19c-4 1-4-2-6-2m12 4v-3.2a3 3 0 0 0-.8-2.3c2.7-.3 5.5-1.3 5.5-6A4.7 4.7 0 0 0 18.4 6a4.3 4.3 0 0 0-.1-3.2s-1-.3-3.4 1.3a13 13 0 0 0-6 0C6.5 2.5 5.5 2.8 5.5 2.8A4.3 4.3 0 0 0 5.4 6a4.7 4.7 0 0 0-1.3 3.5c0 4.7 2.8 5.7 5.5 6a3 3 0 0 0-.8 2.3V21"/></>}
+  {name === 'external' && <><path d="M13 5h6v6m0-6-9 9"/><path d="M19 13v5a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1h5"/></>}
+  {name === 'message' && <path d="M21 11.5a8.5 8.5 0 0 1-8.5 8.5 9 9 0 0 1-4-.9L3 21l1.9-5.5a9 9 0 0 1-.9-4A8.5 8.5 0 0 1 12.5 3 8.5 8.5 0 0 1 21 11.5Z"/>}
+</svg>

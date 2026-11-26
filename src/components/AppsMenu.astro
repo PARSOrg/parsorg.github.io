@@ -1,0 +1,31 @@
+---
+import { applications } from '../lib/applications';
+import Icon from './Icon.astro';
+---
+<details class="apps-menu" data-apps-menu>
+  <summary><Icon name="grid" size={17} /><span>Apps</span><Icon name="chevron" size={15} /></summary>
+  <nav class="apps-popover" aria-label="Applications">
+    <p class="popover-label">OUR APPLICATIONS</p>
+    {applications.map(app => (
+      <a class="app-menu-link" href={'/apps/' + app.slug + '/'} data-theme={app.theme}>
+        <span class="app-icon"><Icon name={app.icon} size={23} /></span>
+        <span class="menu-copy"><strong>{app.name}</strong><small>{app.description}</small></span>
+        <Icon name="arrow" size={16} />
+      </a>
+    ))}
+  </nav>
+</details>
+<script>
+  const menu = document.querySelector<HTMLDetailsElement>('[data-apps-menu]');
+  if (menu) {
+    document.addEventListener('click', event => {
+      if (event.target instanceof Node && !menu.contains(event.target)) menu.open = false;
+    });
+    menu.addEventListener('keydown', event => {
+      if (event.key === 'Escape' && menu.open) {
+        menu.open = false;
+        menu.querySelector('summary')?.focus();
+      }
+    });
+  }
+</script>

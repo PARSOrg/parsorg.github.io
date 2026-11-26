@@ -1,0 +1,11 @@
+---
+import type { Application } from '../lib/applications';
+import Icon from './Icon.astro';
+interface Props { app: Application }
+const { app } = Astro.props;
+---
+<a class="app-card" data-theme={app.theme} href={'/apps/' + app.slug + '/'}>
+  <span class="app-icon app-icon-lg"><Icon name={app.icon} size={29} /></span>
+  <div><h3>{app.name}</h3><p>{app.description}</p></div>
+  <span class="card-arrow"><Icon name="arrow" size={20} /></span>
+</a>

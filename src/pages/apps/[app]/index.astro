@@ -1,0 +1,10 @@
+---
+import ApplicationLayout from '../../../layouts/ApplicationLayout.astro';
+import { applications, type Application } from '../../../lib/applications';
+export function getStaticPaths() {
+  return applications.map(app => ({ params: { app: app.slug }, props: { app } }));
+}
+interface Props { app: Application }
+const { app } = Astro.props;
+---
+<ApplicationLayout app={app} />
