@@ -1,0 +1,26 @@
+---
+import '../styles/global.css';
+interface Props { title: string; description?: string; }
+const { title, description = 'Official PARSOrg website.' } = Astro.props;
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <title>{title}</title>
+  </head>
+  <body class="flex min-h-screen flex-col">
+    <header class="border-b border-slate-800">
+      <div class="mx-auto flex max-w-6xl items-center justify-between px-6 py-5">
+        <a href="/" class="text-xl font-semibold tracking-tight">PARS<span class="text-blue-400">Org</span></a>
+        <a href="https://github.com/PARSOrg" class="text-sm text-slate-300 hover:text-blue-400">GitHub</a>
+      </div>
+    </header>
+    <main class="flex-1"><slot /></main>
+    <footer class="border-t border-slate-800 px-6 py-6 text-center text-sm text-slate-400">
+      © {new Date().getUTCFullYear()} PARSOrg
+    </footer>
+  </body>
+</html>
