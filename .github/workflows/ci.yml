@@ -9,21 +9,34 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v7
+        with:
+          persist-credentials: false
       - uses: actions/setup-node@v6
         with:
           node-version: '24'
       - name: Install dependencies
         run: |
           if [ -f package-lock.json ]; then npm ci; else npm install; fi
+      - name: Dependency versions
+        run: npm ls --depth=0
       - run: npm run check
       - run: npm run build
+      - name: Verify static output
+        run: |
+          test -s dist/index.html
+          grep -q 'PARSOrg' dist/index.html
+          find dist -type f
       - name: Audit dependencies
         if: always()
         run: npm audit --audit-level=high
       - name: Preserve generated dependency lock
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v6
         with:
           name: dependency-lock
           path: package-lock.json
           retention-days: 3
+      - name: Export generated lock for initial commit
+        if: always() && hashFiles('package-lock.json') != ''
+        run: |
+          node --input-type=module -e 'import fs from "node:fs"; import crypto from "node:crypto"; const data=JSON.stringify(JSON.parse(fs.readFileSync("package-lock.json","utf8"))); const parts=data.match(/.{1,1500}/g); console.log("LOCKHASH:"+crypto.createHash("sha256").update(data).digest("hex")); parts.forEach((part,i)=>console.log("LOCKPART:"+i+":"+part)); console.log("LOCKCOUNT:"+parts.length)'
