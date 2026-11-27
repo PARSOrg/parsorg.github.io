@@ -1,12 +1,14 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import SocialLinks from '../components/SocialLinks.astro';
+import MotionControl from '../components/MotionControl.astro';
 import AppCard from '../components/AppCard.astro';
 import Icon from '../components/Icon.astro';
 import { applications } from '../lib/applications';
 ---
 <BaseLayout title="PARSOrg — Building useful experiences" description="Discover applications and resources from PARSOrg.">
-  <section class="home-hero site-container">
+  <section class="home-hero site-container" data-motion-hero="home">
+    <MotionControl />
     <div class="hero-mark"><Icon name="layers" size={56} /></div>
     <h1>PARS<span class="brand-accent">Org</span></h1>
     <p class="hero-tagline">Building useful experiences.</p>

@@ -125,9 +125,8 @@ a.app-card:hover, a.resource-card:hover { border-color: var(--accent); backgroun
 
 .app-card { display: flex; flex-direction: column; align-items: center; gap: 14px; padding: 20px 12px 14px; border: 1px solid var(--border); background: var(--surface); border-radius: 16px; min-width: 0; transition: border-color .18s, background .18s; }
 .app-card-art { display: grid; place-items: center; padding-top: 4px; }
-.app-card-art .app-icon { position: relative; width: 76px; height: 76px; border-radius: 20px; transition: transform .18s; }
+.app-card-art .app-icon { position: relative; width: 76px; height: 76px; border-radius: 20px; }
 .app-card-body { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 12px; padding: 0; flex: 1; }
-.app-card:hover .app-icon, .app-card:focus-visible .app-icon { transform: translateY(-3px); }
 
 .official-app-icon { display: block; width: 100%; height: 100%; object-fit: contain; border-radius: inherit; }
 
