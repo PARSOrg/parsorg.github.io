@@ -8,7 +8,7 @@ import Icon from './Icon.astro';
     <p class="popover-label">OUR APPLICATIONS</p>
     {applications.map(app => (
       <a class="app-menu-link" href={'/apps/' + app.slug + '/'} data-theme={app.theme}>
-        <span class="app-icon"><Icon name={app.icon} size={23} /></span>
+        <span class="app-icon">{app.iconUrl ? <img class="official-app-icon" src={app.iconUrl} alt="" width={23} height={23} /> : <Icon name={app.icon} size={23} />}</span>
         <span class="menu-copy"><strong>{app.name}</strong><small>{app.description}</small></span>
         <Icon name="arrow" size={16} />
       </a>

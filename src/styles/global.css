@@ -130,3 +130,5 @@ a.app-card:hover, a.resource-card:hover { border-color: var(--accent); backgroun
 .app-card-body { display: flex; align-items: center; gap: 12px; padding: 0 8px 8px; flex: 1; }
 .app-card:hover .app-icon, .app-card:focus-visible .app-icon { transform: translateY(-3px); }
 @media (max-width: 700px) { .app-card-art { height: 125px; } }
+
+.official-app-icon { display: block; width: 100%; height: 100%; object-fit: contain; border-radius: inherit; }

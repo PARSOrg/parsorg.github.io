@@ -7,6 +7,7 @@ export interface Application {
   tagline: string;
   theme: 'blue' | 'violet';
   icon: 'compass' | 'book';
+  iconUrl?: string;
   links: { googlePlay?: string; discord?: string; github?: string };
 }
 
