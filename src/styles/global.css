@@ -145,3 +145,28 @@ a.social-link:hover { background: #192436; }
 .coming-soon span { font-size: 30px; line-height: 1; color: #657389; }
 @media (max-width: 900px) { .applications-section .app-grid { grid-template-columns: repeat(3,minmax(0,1fr)); } }
 @media (max-width: 700px) { .applications-section .app-grid { grid-template-columns: repeat(2,minmax(0,1fr)); gap: 10px; } .app-card { padding-inline: 8px; } .app-card h3 { font-size: 14px; } .app-card p { font-size: 12px; } }
+
+[data-theme="parkvector"] { --accent: #4285ef; --accent-bg: #10356c; --brand-primary: #1564e5; }
+body[data-theme="parkvector"] .site-header { border-bottom-color: var(--brand-primary); }
+body[data-theme] .brand > svg, body[data-theme] .brand-accent { color: var(--accent); }
+body[data-theme] .site-header { border-bottom-color: color-mix(in srgb,var(--accent) 24%,var(--border)); }
+body[data-theme] .apps-menu summary { background: color-mix(in srgb,var(--accent-bg) 65%,#192436); border-color: color-mix(in srgb,var(--accent) 25%,var(--border)); }
+body[data-theme] .apps-menu summary:hover { border-color: var(--accent); }
+body[data-theme] a:focus-visible, body[data-theme] summary:focus-visible { outline-color: var(--accent); }
+body[data-theme] .document-content a { color: var(--accent); }
+.product-page .product-hero { display: block; padding: 18px 0 42px; text-align: center; background: radial-gradient(ellipse at 50% 25%,color-mix(in srgb,var(--accent) 7%,transparent),transparent 65%); }
+.product-intro { display: flex; flex-direction: column; align-items: center; }
+.product-intro .product-icon { width: 100px; height: 100px; border-radius: 24px; margin-bottom: 20px; }
+.product-intro .product-tagline { color: var(--accent); text-align: center; text-wrap: balance; }
+.product-intro .product-description { text-align: center; margin-inline: auto; }
+.product-intro .product-links { justify-content: center; }
+.store-unavailable { opacity: .7; cursor: default; }
+.store-unavailable:hover { filter: none; }
+.product-page .resources-section { max-width: 760px; margin-inline: auto; border-color: color-mix(in srgb,var(--accent) 18%,var(--border)); }
+.product-page .resource-grid { grid-template-columns: repeat(2,minmax(0,1fr)); gap: 12px; }
+.product-page .resource-card { flex-wrap: wrap; gap: 10px; padding: 16px; align-content: start; border-color: color-mix(in srgb,var(--accent) 12%,var(--border)); }
+.product-page .resource-card > div { order: 1; flex-basis: 100%; }
+.product-page .resource-card h3 { font-size: 15px; overflow-wrap: anywhere; }
+.product-page .resource-pending h3 { color: var(--muted); }
+.product-page a.resource-card:hover { border-color: var(--accent); }
+@media (max-width: 700px) { .product-page .product-hero { padding-top: 8px; } .product-page .resource-card { padding: 12px; } }

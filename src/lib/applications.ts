@@ -1,13 +1,16 @@
 import data from '../data/applications.json';
 
+export interface SocialLink { name: string; icon: string; enabled: boolean; url: string | null }
+
 export interface Application {
   slug: string;
   name: string;
   description: string;
   tagline: string;
-  theme: 'blue' | 'violet';
+  theme: 'blue' | 'violet' | 'parkvector';
   icon: 'compass' | 'book';
   iconUrl?: string;
+  socials?: SocialLink[];
   links: { googlePlay?: string; discord?: string; github?: string };
 }
 

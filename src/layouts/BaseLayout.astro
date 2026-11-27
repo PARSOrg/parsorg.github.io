@@ -2,8 +2,8 @@
 import '../styles/global.css';
 import AppsMenu from '../components/AppsMenu.astro';
 import Icon from '../components/Icon.astro';
-interface Props { title: string; description?: string; }
-const { title, description = 'Official PARSOrg website.' } = Astro.props;
+interface Props { title: string; description?: string; theme?: string; }
+const { title, description = 'Official PARSOrg website.', theme } = Astro.props;
 ---
 <!doctype html>
 <html lang="en">
@@ -14,7 +14,7 @@ const { title, description = 'Official PARSOrg website.' } = Astro.props;
     <meta name="theme-color" content="#0b1019" />
     <title>{title}</title>
   </head>
-  <body>
+  <body data-theme={theme}>
     <a class="skip-link" href="#main">Skip to content</a>
     <header class="site-header">
       <div class="site-container header-inner">
