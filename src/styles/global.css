@@ -170,3 +170,22 @@ body[data-theme] .document-content a { color: var(--accent); }
 .product-page .resource-pending h3 { color: var(--muted); }
 .product-page a.resource-card:hover { border-color: var(--accent); }
 @media (max-width: 700px) { .product-page .product-hero { padding-top: 8px; } .product-page .resource-card { padding: 12px; } }
+
+/* Application-specific page surfaces, without changing the organization homepage. */
+body[data-theme="parkvector"] { background: #081b36; --surface: #10294d; --border: #204b86; --accent: #80b1ff; }
+body[data-theme="parkvector"] .site-header, body[data-theme="parkvector"] .site-footer { background: #10356c; border-color: #204b86; }
+body[data-theme="parkvector"] .brand > svg, body[data-theme="parkvector"] .brand-accent { color: #fff; }
+body[data-theme="parkvector"] .resource-pending { background: #10294d; }
+body[data-theme="parkvector"] a.resource-card:hover { background: #173b69; }
+body[data-theme="violet"] { background: #181126; --surface: #251c3b; --border: #49365f; }
+body[data-theme="violet"] .site-header, body[data-theme="violet"] .site-footer { background: #33274d; border-color: #49365f; }
+body[data-theme="violet"] .resource-pending { background: #251c3b; }
+body[data-theme="violet"] a.resource-card:hover { background: #382a50; }
+.product-page .product-hero { padding-top: 48px; padding-bottom: 30px; }
+.product-page .resources-section { padding-top: 20px; }
+.product-page .resource-card { display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; gap: 8px; padding: 14px 10px; min-width: 0; }
+.product-page .resource-card > div { order: 0; flex-basis: auto; }
+.product-page .resource-card p { margin-top: 3px; }
+.app-card-body { gap: 0; }
+.app-card { padding-bottom: 18px; }
+@media (max-width: 700px) { .product-page .product-hero { padding-top: 30px; } }

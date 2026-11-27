@@ -5,19 +5,18 @@ interface Props { slug: string }
 const { slug } = Astro.props;
 const documents = getDocuments(slug);
 ---
-<section class="resources-section" aria-labelledby="resources-title">
-  <div class="section-heading"><div><h2 id="resources-title">Resources</h2></div></div>
+<section class="resources-section" aria-label="Resources">
   <div class="resource-grid">
     {resourceTypes.map(resource => {
       const doc = documents.find(item => item.slug === resource.slug);
       return doc ? (
-        <a class="resource-card" href={doc.url}><Icon name={resource.icon} size={25} /><div><h3>{doc.title}</h3></div><Icon name="arrow" size={18} /></a>
+        <a class="resource-card" href={doc.url}><Icon name={resource.icon} size={25} /><div><h3>{doc.title}</h3></div></a>
       ) : (
         <div class="resource-card resource-pending"><Icon name={resource.icon} size={25} /><div><h3>{resource.label}</h3><p>Coming soon</p></div></div>
       );
     })}
     {documents.filter(doc => !resourceTypes.some(resource => resource.slug === doc.slug)).map(doc => (
-      <a class="resource-card" href={doc.url}><Icon name="file" size={25} /><div><h3>{doc.title}</h3></div><Icon name="arrow" size={18} /></a>
+      <a class="resource-card" href={doc.url}><Icon name="file" size={25} /><div><h3>{doc.title}</h3></div></a>
     ))}
   </div>
 </section>
