@@ -1,0 +1,14 @@
+---
+import type { Application } from '../lib/applications';
+import Icon from './Icon.astro';
+interface Props { links: Application['links'] }
+const { links } = Astro.props;
+---
+{(links.googlePlay || links.discord || links.github) && <div class="product-links">
+  {links.googlePlay && <a class="store-button" href={links.googlePlay}>
+    <svg width="30" height="34" viewBox="0 0 32 36" aria-hidden="true"><path d="M2 2 19 18 2 34Z" fill="#32BBF5"/><path d="M2 2 25 12 19 18Z" fill="#35D17C"/><path d="m2 34 23-10-6-6Z" fill="#F04A59"/><path d="m25 12 6 4q3 2 0 4l-6 4-6-6Z" fill="#F9CC38"/></svg>
+    <span><small>GET IT ON</small><strong>Google Play</strong></span>
+  </a>}
+  {links.discord && <a class="discord-button" href={links.discord}><Icon name="message" size={22} /> Join Discord</a>}
+  {links.github && <a class="secondary-button" href={links.github}><Icon name="github" size={22} /> GitHub</a>}
+</div>}

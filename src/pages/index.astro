@@ -1,10 +1,20 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import AppCard from '../components/AppCard.astro';
+import Icon from '../components/Icon.astro';
+import { applications } from '../lib/applications';
 ---
-<BaseLayout title="PARSOrg" description="Independent software development.">
-  <section class="mx-auto max-w-3xl px-6 py-24 text-center sm:py-36">
-    <p class="mb-4 text-sm font-medium tracking-widest text-blue-400 uppercase">Independent software development</p>
-    <h1 class="text-5xl font-bold tracking-tight sm:text-6xl">PARSOrg</h1>
-    <p class="mt-6 text-xl text-slate-400">Building useful experiences.</p>
+<BaseLayout title="PARSOrg — Independent software development" description="Discover applications and resources from PARSOrg.">
+  <section class="home-hero site-container">
+    <div class="hero-mark"><Icon name="layers" size={56} /></div>
+    <p class="eyebrow">INDEPENDENT SOFTWARE DEVELOPMENT</p>
+    <h1>PARS<span class="brand-accent">Org</span></h1>
+    <p class="hero-tagline">Building useful experiences.</p>
+    <p class="hero-description">Discover our applications and find their documentation, updates and support resources in one place.</p>
+    <a class="primary-button" href="#applications">Explore our applications <Icon name="arrow" size={18} /></a>
+  </section>
+  <section class="site-container applications-section" id="applications">
+    <div class="section-heading"><div><p class="eyebrow">OUR PRODUCTS</p><h2>Applications</h2></div><span class="muted">{applications.length} applications</span></div>
+    <div class="app-grid">{applications.map(app => <AppCard app={app} />)}</div>
   </section>
 </BaseLayout>
