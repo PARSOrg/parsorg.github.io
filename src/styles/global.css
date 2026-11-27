@@ -163,8 +163,7 @@ body[data-theme] .document-content a { color: var(--accent); }
 .store-unavailable:hover { filter: none; }
 .product-page .resources-section { max-width: 760px; margin-inline: auto; border-color: color-mix(in srgb,var(--accent) 18%,var(--border)); }
 .product-page .resource-grid { grid-template-columns: repeat(2,minmax(0,1fr)); gap: 12px; }
-.product-page .resource-card { flex-wrap: wrap; gap: 10px; padding: 16px; align-content: start; border-color: color-mix(in srgb,var(--accent) 12%,var(--border)); }
-.product-page .resource-card > div { order: 1; flex-basis: 100%; }
+.product-page .resource-card { border-color: color-mix(in srgb,var(--accent) 12%,var(--border)); }
 .product-page .resource-card h3 { font-size: 15px; overflow-wrap: anywhere; }
 .product-page .resource-pending h3 { color: var(--muted); }
 .product-page a.resource-card:hover { border-color: var(--accent); }
@@ -182,9 +181,12 @@ body[data-theme="violet"] .resource-pending { background: #251c3b; }
 body[data-theme="violet"] a.resource-card:hover { background: #382a50; }
 .product-page .product-hero { padding-top: 48px; padding-bottom: 30px; }
 .product-page .resources-section { padding-top: 20px; }
-.product-page .resource-card { display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; gap: 8px; padding: 14px 10px; min-width: 0; }
-.product-page .resource-card > div { order: 0; flex-basis: auto; }
-.product-page .resource-card p { margin-top: 3px; }
+.product-page .resource-grid { grid-auto-rows: 1fr; }
+.product-page .resource-card { display: grid; grid-template-rows: 25px 1fr; justify-items: center; align-items: start; align-content: start; text-align: center; gap: 8px; padding: 14px 10px; min-width: 0; }
+.product-page .resource-card > svg { display: block; margin: 0; justify-self: center; }
+.product-page .resource-card > div { display: grid; grid-template-rows: minmax(2.5em, auto) minmax(1.5em, auto); justify-items: center; align-items: start; width: 100%; min-width: 0; font-size: 15px; }
+.product-page .resource-card h3 { width: 100%; line-height: 1.25; text-align: center; }
+.product-page .resource-card p { margin: 0; line-height: 1.5; text-align: center; }
 .app-card-body { gap: 0; }
 .app-card { padding-bottom: 18px; }
 @media (max-width: 700px) { .product-page .product-hero { padding-top: 30px; } }
