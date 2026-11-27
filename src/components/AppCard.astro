@@ -6,5 +6,5 @@ const { app } = Astro.props;
 ---
 <a class="app-card" data-theme={app.theme} href={'/apps/' + app.slug + '/'}>
   <div class="app-card-art" aria-hidden="true"><span class="app-icon app-icon-lg">{app.iconUrl ? <img class="official-app-icon" src={app.iconUrl} alt="" width={38} height={38} /> : <Icon name={app.icon} size={38} />}</span></div>
-  <div class="app-card-body"><div><h3>{app.name}</h3><p>{app.tagline}</p></div><span class="card-arrow"><Icon name="arrow" size={20} /></span></div>
+  <div class="app-card-body"><div><h3>{app.name}</h3><p>{app.tagline}</p></div></div>
 </a>

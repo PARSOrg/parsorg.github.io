@@ -10,7 +10,6 @@ const { app } = Astro.props;
 ---
 <BaseLayout title={app.name + ' — PARSOrg'} description={app.description} theme={app.theme}>
   <div class="site-container product-page" data-theme={app.theme}>
-    <nav class="breadcrumbs" aria-label="Breadcrumb"><a href="/#applications">← All applications</a></nav>
     <section class="product-hero">
       <div class="product-intro">
         <span class="app-icon product-icon">{app.iconUrl ? <img class="official-app-icon" src={app.iconUrl} alt="" width={37} height={37} /> : <Icon name={app.icon} size={37} />}</span>
