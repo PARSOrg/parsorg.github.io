@@ -1,0 +1,96 @@
+/* Distinctive motion: all effects are optional and leave the layout intact. */
+:root { --motion-ease: cubic-bezier(.2,.75,.2,1); --motion-fast: 160ms; --motion-card: 200ms; }
+@view-transition { navigation: auto; }
+::view-transition-group(root) { animation-duration: 220ms; animation-timing-function: ease-in-out; }
+/* The complete new page replaces the old snapshot; no shared-element flight. */
+::view-transition-old(root) { animation: none; mix-blend-mode: normal; }
+::view-transition-new(root) { animation: page-arrive 220ms ease-in-out both; mix-blend-mode: normal; }
+@keyframes page-arrive { from { opacity: 0; } to { opacity: 1; } }
+
+/* Square icon boxes with a single centered image, no independent movement. */
+.app-card .app-card-art, .app-card .app-card-body { width: 100%; }
+.app-card .app-card-art { display: grid; place-items: center; }
+.app-card .app-icon, .app-menu-link .app-icon, .product-intro .product-icon { display: grid; place-items: center; aspect-ratio: 1; flex-shrink: 0; transform: none; }
+.app-icon .official-app-icon { display: block; width: 100%; height: 100%; min-width: 0; min-height: 0; object-fit: contain; object-position: center; aspect-ratio: 1; transform: none; }
+.product-intro .product-icon { margin-inline: auto; }
+.home-hero .hero-tagline, .product-intro .product-tagline { width: 100%; text-align: center; text-wrap: balance; }
+
+/* Ambient layer is bounded independently of content. Never animate the app SVG. */
+[data-motion-hero] { position: relative; isolation: isolate; }
+.home-hero[data-motion-hero]::before,
+.product-page .product-hero[data-motion-hero="park"]::before {
+  content: ""; position: absolute; inset: 12px 8% 8px; z-index: -1; pointer-events: none;
+  background: radial-gradient(ellipse at 50% 32%, #2563eb26, transparent 62%);
+  opacity: .85; transform-origin: center;
+}
+.product-page .product-hero[data-motion-hero="park"] { background: none; }
+.product-page .product-hero[data-motion-hero="park"]::before {
+  background: radial-gradient(ellipse at 50% 30%, #1564e52b, transparent 62%);
+}
+html[data-motion-ready] [data-motion-hero="home"]::before { animation: ambient-breathe 10s ease-in-out infinite paused; }
+html[data-motion-ready] [data-motion-hero="park"]::before { animation: ambient-direction 12s ease-in-out infinite paused; }
+html[data-motion-ready]:not([data-motion-paused]):not([data-motion-hidden]) [data-motion-hero][data-motion-visible]::before { animation-play-state: running; }
+@keyframes ambient-breathe {
+  0%,100% { opacity: .62; transform: scale(.97) translateY(4px); }
+  50% { opacity: 1; transform: scale(1.05) translateY(-4px); }
+}
+@keyframes ambient-direction {
+  0%,100% { opacity: .62; transform: translate(-8px,8px) scale(.98); }
+  50% { opacity: 1; transform: translate(8px,-8px) scale(1.04); }
+}
+.motion-control[hidden] { display: none; }
+.motion-control:not([hidden]) { display: grid; place-items: center; }
+.motion-control { position: absolute; top: 6px; right: 0; width: 44px; height: 44px; color: var(--muted); background: transparent; border: 1px solid transparent; border-radius: 9px; cursor: pointer; z-index: 1; }
+.motion-control:hover { color: var(--accent); background: var(--surface); }
+.motion-control:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.motion-control .motion-play-icon, .motion-control[aria-pressed="true"] .motion-pause-icon { display: none; }
+.motion-control[aria-pressed="true"] .motion-play-icon { display: block; }
+
+/* One short reveal. Important text never starts invisible. Disabled links are static. */
+@keyframes content-arrive { from { opacity: .82; transform: translateY(4px); } to { opacity: 1; transform: none; } }
+html[data-motion-ready] .home-hero :is(.hero-mark,h1,.hero-tagline,.primary-button),
+html[data-motion-ready] [data-motion-hero="park"] .product-intro :is(h1,.product-tagline,.product-description),
+html[data-motion-ready] [data-motion-hero] :is(a.social-link,a.store-button,a.discord-button,a.secondary-button) {
+  animation: content-arrive 450ms var(--motion-ease) both; animation-delay: var(--entry-delay,0ms);
+}
+.home-hero h1 { --entry-delay: 45ms; }
+.home-hero .hero-tagline { --entry-delay: 90ms; }
+.home-hero .primary-button { --entry-delay: 135ms; }
+[data-motion-hero="park"] .product-tagline { --entry-delay: 45ms; }
+[data-motion-hero="park"] .product-description { --entry-delay: 90ms; }
+[data-motion-hero] a.social-link { --entry-delay: 180ms; }
+[data-motion-hero] :is(a.store-button,a.discord-button,a.secondary-button) { --entry-delay: 135ms; }
+
+/* The whole card moves by at most 2px; the image does not move inside it. */
+.applications-section a.app-card, [data-theme="parkvector"] a.resource-card {
+  position: relative; isolation: isolate;
+  transition: transform var(--motion-card) var(--motion-ease), border-color var(--motion-card), background-color var(--motion-card);
+}
+.applications-section a.app-card::after, [data-theme="parkvector"] a.resource-card::after {
+  content: ""; position: absolute; inset: 0; border-radius: inherit; pointer-events: none; z-index: -1;
+  background: radial-gradient(circle 100px at var(--spot-x,50%) var(--spot-y,50%), color-mix(in srgb,var(--accent) 14%,transparent), transparent);
+  opacity: 0; transition: opacity var(--motion-card);
+}
+@media (hover: hover) and (pointer: fine) {
+  .applications-section a.app-card:hover { transform: translateY(-2px); border-color: var(--accent); }
+  html[data-motion-ready] :is(a.app-card,a.resource-card)[data-pointer-glow]::after { opacity: 1; }
+}
+.applications-section a.app-card:focus-visible, [data-theme="parkvector"] a.resource-card:focus-visible { border-color: var(--accent); }
+[data-motion-hero] :is(a.primary-button,a.social-link,a.store-button,a.discord-button,a.secondary-button), .github-link, .apps-menu summary {
+  transition: background-color var(--motion-fast), color var(--motion-fast), border-color var(--motion-fast), transform var(--motion-fast);
+}
+[data-motion-hero] :is(a.primary-button,a.social-link,a.store-button,a.discord-button,a.secondary-button):active { transform: scale(.98); }
+.apps-menu summary svg:last-child { transition: transform var(--motion-fast) var(--motion-ease); }
+.apps-menu[open] .apps-popover { animation: menu-arrive var(--motion-fast) var(--motion-ease) both; }
+@keyframes menu-arrive { from { opacity: .7; transform: translateY(-4px); } to { opacity: 1; transform: none; } }
+
+@media (prefers-reduced-motion: reduce) {
+  @view-transition { navigation: none; }
+  ::view-transition-group(*), ::view-transition-old(*), ::view-transition-new(*) { animation: none !important; }
+  html[data-motion-ready] [data-motion-hero]::before,
+  html[data-motion-ready] [data-motion-hero] *,
+  .apps-menu[open] .apps-popover { animation: none !important; }
+  .motion-control { display: none !important; }
+  .applications-section a.app-card:hover, [data-motion-hero] a:active { transform: none; }
+  a.app-card::after, a.resource-card::after { display: none; }
+}

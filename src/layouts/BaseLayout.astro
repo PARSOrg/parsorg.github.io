@@ -1,5 +1,6 @@
 ---
 import '../styles/global.css';
+import '../styles/motion.css';
 import AppsMenu from '../components/AppsMenu.astro';
 import Icon from '../components/Icon.astro';
 interface Props { title: string; description?: string; theme?: string; }
@@ -29,5 +30,8 @@ const { title, description = 'Official PARSOrg website.', theme } = Astro.props;
     <footer class="site-footer">
       <div class="site-container footer-inner"><span>© {new Date().getUTCFullYear()} PARSOrg</span><a href="https://github.com/PARSOrg">GitHub <Icon name="external" size={14} /></a></div>
     </footer>
+      <script>
+      import "../lib/motion";
+    </script>
   </body>
 </html>

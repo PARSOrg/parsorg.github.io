@@ -4,13 +4,15 @@ import BaseLayout from './BaseLayout.astro';
 import Icon from '../components/Icon.astro';
 import ProductLinks from '../components/ProductLinks.astro';
 import SocialLinks from '../components/SocialLinks.astro';
+import MotionControl from '../components/MotionControl.astro';
 import ResourceCards from '../components/ResourceCards.astro';
 interface Props { app: Application }
 const { app } = Astro.props;
 ---
 <BaseLayout title={app.name + ' — PARSOrg'} description={app.description} theme={app.theme}>
   <div class="site-container product-page" data-theme={app.theme}>
-    <section class="product-hero">
+    <section class="product-hero" data-motion-hero={app.slug === "parkvector" ? "park" : undefined}>
+      {app.slug === "parkvector" && <MotionControl />}
       <div class="product-intro">
         <span class="app-icon product-icon">{app.iconUrl ? <img class="official-app-icon" src={app.iconUrl} alt="" width={37} height={37} /> : <Icon name={app.icon} size={37} />}</span>
         <h1>{app.name}</h1>
