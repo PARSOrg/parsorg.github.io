@@ -125,8 +125,8 @@ a.app-card:hover, a.resource-card:hover { border-color: var(--accent); backgroun
 
 .app-card { display: flex; flex-direction: column; gap: 16px; padding: 12px; border: 1px solid var(--border); background: var(--surface); border-radius: 16px; min-width: 0; transition: border-color .18s, background .18s; }
 .app-card-art { height: 160px; position: relative; overflow: hidden; display: grid; place-items: center; border-radius: 11px; background: radial-gradient(ellipse at center, var(--accent-bg), #101827 85%); }
-.app-card-orbit { position: absolute; width: 132px; height: 132px; border-radius: 50%; border: 1px solid color-mix(in srgb, var(--accent) 25%, transparent); box-shadow: 0 0 0 23px color-mix(in srgb, var(--accent) 5%, transparent); }
-.app-card-art .app-icon { position: relative; width: 76px; height: 76px; border-radius: 20px; transition: transform .18s; }
+.app-card-orbit { position: absolute; width: 132px; height: 132px; border-radius: 50%; border: 1px solid color-mix(in srgb, var(--accent) 14%, transparent); box-shadow: 0 0 0 23px color-mix(in srgb, var(--accent) 2%, transparent); }
+.app-card-art .app-icon { position: relative; width: 88px; height: 88px; border-radius: 22px; transition: transform .18s; }
 .app-card-body { display: flex; align-items: center; gap: 12px; padding: 0 8px 8px; flex: 1; }
 .app-card:hover .app-icon, .app-card:focus-visible .app-icon { transform: translateY(-3px); }
 @media (max-width: 700px) { .app-card-art { height: 125px; } }
