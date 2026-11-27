@@ -15,8 +15,5 @@ const documents = getDocuments(slug);
         <div class="resource-card resource-pending"><Icon name={resource.icon} size={25} /><div><h3>{resource.label}</h3><p>Coming soon</p></div></div>
       );
     })}
-    {documents.filter(doc => !resourceTypes.some(resource => resource.slug === doc.slug)).map(doc => (
-      <a class="resource-card" href={doc.url}><Icon name="file" size={25} /><div><h3>{doc.title}</h3></div></a>
-    ))}
   </div>
 </section>
