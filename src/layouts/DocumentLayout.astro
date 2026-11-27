@@ -1,14 +1,18 @@
 ---
 import BaseLayout from './BaseLayout.astro';
-import { applications } from '../lib/applications';
+import { applications, getDocuments } from '../lib/applications';
 interface Props { frontmatter: { title: string; description?: string }; url?: string }
 const { frontmatter } = Astro.props;
 const slug = Astro.url.pathname.split('/').filter(Boolean)[1];
 const app = applications.find(item => item.slug === slug);
+const current = Astro.url.pathname.split('/').filter(Boolean).at(-1);
+const groups: string[][] = [['documentation', 'faq', 'support'], ['terms-of-service', 'licenses']];
+const group = groups.find(items => items.includes(current ?? '')) ?? [];
+const related = app ? getDocuments(app.slug).filter(doc => group.includes(doc.slug) && doc.slug !== current) : [];
 ---
 <BaseLayout title={frontmatter.title + ' — ' + (app?.name ?? 'PARSOrg')} description={frontmatter.description} theme={app?.theme}>
   <article class="site-container document-page">
     <nav class="breadcrumbs" aria-label="Breadcrumb"><a href="/">Home</a><span>/</span>{app && <><a href={'/apps/' + app.slug + '/'}>{app.name}</a><span>/</span></>}<span>{frontmatter.title}</span></nav>
-    <div class="document-content"><h1>{frontmatter.title}</h1><slot /></div>
+    <div class="document-content"><h1>{frontmatter.title}</h1><slot />{related.length > 0 && <nav aria-label="Related documents"><h2>Related documents</h2><ul>{related.map(doc => <li><a href={doc.url}>{doc.title}</a></li>)}</ul></nav>}</div>
   </article>
 </BaseLayout>

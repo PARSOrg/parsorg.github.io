@@ -1,0 +1,15 @@
+{
+  "parkvector": {
+    "sourceRepository": "PARSOrg/ParkVector",
+    "sourceDirectory": "docs/public",
+    "documents": {
+      "changelog": "Changelog",
+      "documentation": "Documentation",
+      "privacy-policy": "Privacy Policy",
+      "terms-of-service": "Terms of Service",
+      "faq": "FAQ & Troubleshooting",
+      "support": "Support",
+      "licenses": "Third-Party Licenses"
+    }
+  }
+}

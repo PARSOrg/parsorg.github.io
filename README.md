@@ -16,7 +16,7 @@ For a custom product page, adapt the shared ApplicationLayout with additional co
 
 ## Publish documents
 
-Place Markdown pages in `src/pages/apps/<slug>/docs/` using the frontmatter layout `../../../../layouts/DocumentLayout.astro` and a title. The app page discovers these pages automatically. Standard filenames are `changelog.md`, `documentation.md`, `privacy-policy.md` and `terms-of-service.md`. Missing documents are marked as not yet published, not linked. Do not publish unapproved legal text or private internal documentation.
+Application repositories own their public documentation. See [the publication contract](docs/PUBLICATION.md) for approved export format, import and future synchronization. The website publishes reviewed Markdown snapshots under stable URLs. Missing primary documents remain unlinked.
 
 ## Deployment
 
