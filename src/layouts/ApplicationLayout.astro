@@ -13,7 +13,7 @@ const { app } = Astro.props;
     <nav class="breadcrumbs" aria-label="Breadcrumb"><a href="/">Home</a><span>/</span><span>{app.name}</span></nav>
     <section class="product-hero">
       <div class="product-intro">
-        <span class="app-icon product-icon"><Icon name={app.icon} size={37} /></span>
+        <span class="app-icon product-icon">{app.iconUrl ? <img class="official-app-icon" src={app.iconUrl} alt="" width={37} height={37} /> : <Icon name={app.icon} size={37} />}</span>
         <h1>{app.name}</h1>
         <p class="product-tagline">{app.tagline}</p>
         <p class="product-description">{app.description}</p>

@@ -7,5 +7,5 @@ const { app } = Astro.props;
 <div class="product-art" data-theme={app.theme} aria-hidden="true">
   <div class="art-orbit orbit-one"></div><div class="art-orbit orbit-two"></div><div class="art-orbit orbit-three"></div>
   <span class="art-dot dot-one"></span><span class="art-dot dot-two"></span>
-  <div class="art-emblem"><Icon name={app.icon} size={104} /></div>
+  <div class="art-emblem">{app.iconUrl ? <img class="official-app-icon" src={app.iconUrl} alt="" width={104} height={104} /> : <Icon name={app.icon} size={104} />}</div>
 </div>

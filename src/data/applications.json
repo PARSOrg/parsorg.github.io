@@ -6,7 +6,8 @@
     "tagline": "Never lose your car again.",
     "theme": "blue",
     "icon": "compass",
-    "links": {}
+    "links": {},
+    "iconUrl": "/icons/parkvector.svg"
   },
   {
     "slug": "mangauniverse",
