@@ -3,26 +3,9 @@ const root = document.documentElement;
 const reduced = matchMedia('(prefers-reduced-motion: reduce)');
 const pointer = matchMedia('(hover: hover) and (pointer: fine)');
 const heroes = [...document.querySelectorAll<HTMLElement>('[data-motion-hero]')];
-const toggles = [...document.querySelectorAll<HTMLButtonElement>('[data-motion-toggle]')];
-const storageKey = 'parsorg:ambient-paused';
-let paused = false;
-try { paused = localStorage.getItem(storageKey) === 'true'; } catch { /* Storage may be blocked. */ }
-
 function syncMotion() {
-  root.toggleAttribute('data-motion-paused', paused || reduced.matches);
+  root.toggleAttribute('data-motion-paused', reduced.matches);
   root.toggleAttribute('data-motion-hidden', document.hidden);
-  for (const toggle of toggles) {
-    toggle.hidden = reduced.matches;
-    toggle.setAttribute('aria-pressed', String(paused));
-    toggle.title = paused ? 'Resume ambient animation' : 'Pause ambient animation';
-  }
-}
-for (const toggle of toggles) {
-  toggle.addEventListener('click', () => {
-    paused = !paused;
-    try { localStorage.setItem(storageKey, String(paused)); } catch { /* Optional persistence. */ }
-    syncMotion();
-  });
 }
 if ('IntersectionObserver' in window) {
   const observer = new IntersectionObserver(entries => {
