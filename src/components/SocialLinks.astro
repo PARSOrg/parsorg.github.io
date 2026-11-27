@@ -1,0 +1,11 @@
+---
+import socials from '../data/socials.json';
+import SocialIcon from './SocialIcon.astro';
+---
+<nav class="social-links" aria-label="Social media">
+  {socials.map(social => social.enabled && social.url ? (
+    <a class="social-link" data-social={social.icon} href={social.url} aria-label={social.name} title={social.name}><SocialIcon name={social.icon} /></a>
+  ) : (
+    <span class="social-link social-unavailable" data-social={social.icon} aria-label={social.name + ' — not available yet'} title={social.name + ' — not available yet'} role="img"><SocialIcon name={social.icon} /></span>
+  ))}
+</nav>

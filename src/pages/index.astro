@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import SocialLinks from '../components/SocialLinks.astro';
 import AppCard from '../components/AppCard.astro';
 import Icon from '../components/Icon.astro';
 import { applications } from '../lib/applications';
@@ -10,9 +11,10 @@ import { applications } from '../lib/applications';
     <h1>PARS<span class="brand-accent">Org</span></h1>
     <p class="hero-tagline">Building useful experiences.</p>
     <a class="primary-button" href="#applications">Explore apps <Icon name="arrow" size={18} /></a>
+    <SocialLinks />
   </section>
   <section class="site-container applications-section" id="applications">
     <div class="section-heading"><h2>Applications</h2></div>
-    <div class="app-grid">{applications.map(app => <AppCard app={app} />)}</div>
+    <div class="app-grid">{applications.map(app => <AppCard app={app} />)}<div class="coming-soon"><span aria-hidden="true">+</span><p>Coming soon</p></div></div>
   </section>
 </BaseLayout>
