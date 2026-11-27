@@ -7,7 +7,7 @@ export interface Application {
   name: string;
   description: string;
   tagline: string;
-  theme: 'blue' | 'violet' | 'teal';
+  theme: 'blue' | 'violet' | 'parkvector';
   icon: 'compass' | 'book';
   iconUrl?: string;
   socials?: SocialLink[];

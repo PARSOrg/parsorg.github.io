@@ -146,7 +146,8 @@ a.social-link:hover { background: #192436; }
 @media (max-width: 900px) { .applications-section .app-grid { grid-template-columns: repeat(3,minmax(0,1fr)); } }
 @media (max-width: 700px) { .applications-section .app-grid { grid-template-columns: repeat(2,minmax(0,1fr)); gap: 10px; } .app-card { padding-inline: 8px; } .app-card h3 { font-size: 14px; } .app-card p { font-size: 12px; } }
 
-[data-theme="teal"] { --accent: #2dd4bf; --accent-bg: #103b38; }
+[data-theme="parkvector"] { --accent: #4285ef; --accent-bg: #10356c; --brand-primary: #1564e5; }
+body[data-theme="parkvector"] .site-header { border-bottom-color: var(--brand-primary); }
 body[data-theme] .brand > svg, body[data-theme] .brand-accent { color: var(--accent); }
 body[data-theme] .site-header { border-bottom-color: color-mix(in srgb,var(--accent) 24%,var(--border)); }
 body[data-theme] .apps-menu summary { background: color-mix(in srgb,var(--accent-bg) 65%,#192436); border-color: color-mix(in srgb,var(--accent) 25%,var(--border)); }

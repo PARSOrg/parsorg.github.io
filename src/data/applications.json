@@ -4,7 +4,7 @@
     "name": "ParkVector",
     "description": "Find your way back to your parked car.",
     "tagline": "Never lose your car again.",
-    "theme": "teal",
+    "theme": "parkvector",
     "icon": "compass",
     "links": {},
     "iconUrl": "/icons/parkvector.svg",
