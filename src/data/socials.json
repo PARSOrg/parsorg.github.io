@@ -1,0 +1,26 @@
+[
+  {
+    "name": "Reddit",
+    "icon": "reddit",
+    "enabled": true,
+    "url": null
+  },
+  {
+    "name": "Discord",
+    "icon": "discord",
+    "enabled": true,
+    "url": null
+  },
+  {
+    "name": "X",
+    "icon": "x",
+    "enabled": false,
+    "url": null
+  },
+  {
+    "name": "Instagram",
+    "icon": "instagram",
+    "enabled": false,
+    "url": null
+  }
+]
