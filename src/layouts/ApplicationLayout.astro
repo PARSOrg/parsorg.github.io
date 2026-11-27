@@ -3,23 +3,23 @@ import type { Application } from '../lib/applications';
 import BaseLayout from './BaseLayout.astro';
 import Icon from '../components/Icon.astro';
 import ProductLinks from '../components/ProductLinks.astro';
-import ProductArtwork from '../components/ProductArtwork.astro';
+import SocialLinks from '../components/SocialLinks.astro';
 import ResourceCards from '../components/ResourceCards.astro';
 interface Props { app: Application }
 const { app } = Astro.props;
 ---
-<BaseLayout title={app.name + ' — PARSOrg'} description={app.description}>
+<BaseLayout title={app.name + ' — PARSOrg'} description={app.description} theme={app.theme}>
   <div class="site-container product-page" data-theme={app.theme}>
-    <nav class="breadcrumbs" aria-label="Breadcrumb"><a href="/">Home</a><span>/</span><span>{app.name}</span></nav>
+    <nav class="breadcrumbs" aria-label="Breadcrumb"><a href="/#applications">← All applications</a></nav>
     <section class="product-hero">
       <div class="product-intro">
         <span class="app-icon product-icon">{app.iconUrl ? <img class="official-app-icon" src={app.iconUrl} alt="" width={37} height={37} /> : <Icon name={app.icon} size={37} />}</span>
         <h1>{app.name}</h1>
         <p class="product-tagline">{app.tagline}</p>
         <p class="product-description">{app.description}</p>
-        <ProductLinks links={app.links} />
+        <ProductLinks links={app.links} showGooglePlay={app.slug === "parkvector"} />
+        <SocialLinks items={app.socials ?? []} />
       </div>
-      <div class="product-visual"><slot name="artwork"><ProductArtwork app={app} /></slot></div>
     </section>
     <slot />
     <ResourceCards slug={app.slug} />

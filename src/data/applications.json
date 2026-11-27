@@ -4,10 +4,36 @@
     "name": "ParkVector",
     "description": "Find your way back to your parked car.",
     "tagline": "Never lose your car again.",
-    "theme": "blue",
+    "theme": "teal",
     "icon": "compass",
     "links": {},
-    "iconUrl": "/icons/parkvector.svg"
+    "iconUrl": "/icons/parkvector.svg",
+    "socials": [
+      {
+        "name": "Reddit",
+        "icon": "reddit",
+        "enabled": true,
+        "url": null
+      },
+      {
+        "name": "Discord",
+        "icon": "discord",
+        "enabled": true,
+        "url": null
+      },
+      {
+        "name": "X",
+        "icon": "x",
+        "enabled": false,
+        "url": null
+      },
+      {
+        "name": "Instagram",
+        "icon": "instagram",
+        "enabled": false,
+        "url": null
+      }
+    ]
   },
   {
     "slug": "mangauniverse",
@@ -16,6 +42,32 @@
     "tagline": "Explore MangaUniverse.",
     "theme": "violet",
     "icon": "book",
-    "links": {}
+    "links": {},
+    "socials": [
+      {
+        "name": "Reddit",
+        "icon": "reddit",
+        "enabled": true,
+        "url": null
+      },
+      {
+        "name": "Discord",
+        "icon": "discord",
+        "enabled": true,
+        "url": null
+      },
+      {
+        "name": "X",
+        "icon": "x",
+        "enabled": false,
+        "url": null
+      },
+      {
+        "name": "Instagram",
+        "icon": "instagram",
+        "enabled": false,
+        "url": null
+      }
+    ]
   }
 ]
